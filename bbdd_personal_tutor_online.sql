@@ -200,3 +200,6 @@ INSERT INTO Calendario_Clases (id_calendario_profesor, id_alumno, id_asignatura,
     (20, 2, 5, "Pendiente", NULL);
     
 /*======================== FIN DEL SCRIPT ======================================*/
+
+
+"a5nDC)9//ICW8[zP"
