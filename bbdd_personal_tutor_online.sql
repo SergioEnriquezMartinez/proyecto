@@ -202,4 +202,5 @@ INSERT INTO Calendario_Clases (id_calendario_profesor, id_alumno, id_asignatura,
 /*======================== FIN DEL SCRIPT ======================================*/
 
 
-"a5nDC)9//ICW8[zP"
+"a5nDC)9//ICW8[zP" /*Para sobremesa*/
+"ZZVyXc0JEV!CyoJ0" /*Para portatil*/
