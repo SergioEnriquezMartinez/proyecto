@@ -9,87 +9,148 @@ DROP TABLE IF EXISTS Calendario_Profesor;
 DROP TABLE IF EXISTS Calendario_Clases;
 
 /*======================== CREAMOS TABLAS ======================================*/
-CREATE TABLE Persona (
-    id_persona INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL,
-    apellido1 VARCHAR(50) NOT NULL,
-    apellido2 VARCHAR(50) NULL,
-    email VARCHAR(50) NOT NULL,
-    password VARCHAR(50) NOT NULL,
-    usuario_teams VARCHAR(50) NULL
-)
+create table asignatura
+(
+    id_asignatura int auto_increment
+        primary key,
+    nombre        varchar(255) not null
+);
 
-CREATE TABLE Alumno (
-    id_persona INT PRIMARY KEY,
-    curso VARCHAR(50) NOT NULL,
-    FOREIGN KEY (id_persona) REFERENCES Persona(id_persona)
-)
+create table roles
+(
+    id_rol   int auto_increment
+        primary key,
+    rol_desc varchar(255) null
+);
 
-CREATE TABLE Profesor (
-    id_persona INT PRIMARY KEY,
-    centro_de_trabajo VARCHAR(255) NULL,
-    FOREIGN KEY (id_persona) REFERENCES Persona(id_persona)
-)
+create table persona
+(
+    id_persona    int auto_increment
+        primary key,
+    nombre        varchar(50) not null,
+    apellido1     varchar(50) not null,
+    apellido2     varchar(50) null,
+    email         varchar(50) not null,
+    password      varchar(50) not null,
+    usuario_teams varchar(50) null,
+    rol           int         not null,
+    constraint persona_roles_id_rol_fk
+        foreign key (rol) references roles (id_rol)
+);
 
-CREATE TABLE Chat (
-    id_chat INT PRIMARY KEY AUTO_INCREMENT,
-    id_emisor INT NOT NULL,
-    id_receptor INT NOT NULL,
-    mensaje LONGTEXT NOT NULL,
-    fecha_hora DATETIME NOT NULL,
-    FOREIGN KEY (id_emisor) REFERENCES Persona(id_persona),
-    FOREIGN KEY (id_receptor) REFERENCES Persona(id_persona)
-)
+create table alumno
+(
+    id_persona int         not null
+        primary key,
+    curso      varchar(50) not null,
+    constraint alumno_ibfk_1
+        foreign key (id_persona) references persona (id_persona)
+);
 
-CREATE TABLE Asignatura (
-    id_asignatura INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(255) NOT NULL
-)
+create table chat
+(
+    id_chat     int auto_increment
+        primary key,
+    id_emisor   int      not null,
+    id_receptor int      not null,
+    mensaje     longtext not null,
+    fecha_hora  datetime not null,
+    constraint chat_ibfk_1
+        foreign key (id_emisor) references persona (id_persona),
+    constraint chat_ibfk_2
+        foreign key (id_receptor) references persona (id_persona)
+);
 
-CREATE TABLE Profesor_Asignatura (
-    id_profesor_asignatura INT PRIMARY KEY AUTO_INCREMENT,
-    id_profesor INT NOT NULL,
-    id_asignatura INT NOT NULL,
-    FOREIGN KEY (id_profesor) REFERENCES Profesor(id_persona),
-    FOREIGN KEY (id_asignatura) REFERENCES Asignatura(id_asignatura)
-)
+create index id_emisor
+    on chat (id_emisor);
 
-CREATE TABLE Calendario_Profesor (
-    id_calendario_profesor INT PRIMARY KEY AUTO_INCREMENT,
-    id_profesor INT NOT NULL,
-    fecha_hora DATETIME NOT NULL,
-    estado_cita VARCHAR(50) NOT NULL,
-    FOREIGN KEY (id_profesor) REFERENCES Profesor(id_persona)
-)
+create index id_receptor
+    on chat (id_receptor);
 
-CREATE TABLE Calendario_Clases (
-    id_clase INT PRIMARY KEY AUTO_INCREMENT,
-    id_calendario_profesor INT NOT NULL,
-    id_alumno INT NOT NULL,
-    id_asignatura INT NOT NULL,
-    estado_cita VARCHAR(50) NOT NULL,
-    valoracion INT NULL,
-    FOREIGN KEY (id_calendario_profesor) REFERENCES Calendario_Profesor(id_calendario_profesor),
-    FOREIGN KEY (id_alumno) REFERENCES Alumno(id_persona),
-    FOREIGN KEY (id_asignatura) REFERENCES Asignatura(id_asignatura)
-)
+create table profesor
+(
+    id_persona        int          not null
+        primary key,
+    centro_de_trabajo varchar(255) null,
+    constraint profesor_ibfk_1
+        foreign key (id_persona) references persona (id_persona)
+);
+
+create table calendario_profesor
+(
+    id_calendario_profesor int auto_increment
+        primary key,
+    id_profesor            int         not null,
+    fecha_hora             datetime    not null,
+    estado_cita            varchar(50) not null,
+    constraint calendario_profesor_ibfk_1
+        foreign key (id_profesor) references profesor (id_persona)
+);
+
+create table calendario_clases
+(
+    id_clase               int auto_increment
+        primary key,
+    id_calendario_profesor int         not null,
+    id_alumno              int         not null,
+    id_asignatura          int         not null,
+    estado_cita            varchar(50) not null,
+    valoracion             int         null,
+    constraint calendario_clases_ibfk_1
+        foreign key (id_calendario_profesor) references calendario_profesor (id_calendario_profesor),
+    constraint calendario_clases_ibfk_2
+        foreign key (id_alumno) references alumno (id_persona),
+    constraint calendario_clases_ibfk_3
+        foreign key (id_asignatura) references asignatura (id_asignatura)
+);
+
+create index id_alumno
+    on calendario_clases (id_alumno);
+
+create index id_asignatura
+    on calendario_clases (id_asignatura);
+
+create index id_calendario_profesor
+    on calendario_clases (id_calendario_profesor);
+
+create index id_profesor
+    on calendario_profesor (id_profesor);
+
+create table profesor_asignatura
+(
+    id_profesor_asignatura int auto_increment
+        primary key,
+    id_profesor            int not null,
+    id_asignatura          int not null,
+    constraint profesor_asignatura_ibfk_1
+        foreign key (id_profesor) references profesor (id_persona),
+    constraint profesor_asignatura_ibfk_2
+        foreign key (id_asignatura) references asignatura (id_asignatura)
+);
+
+create index id_asignatura
+    on profesor_asignatura (id_asignatura);
+
+create index id_profesor
+    on profesor_asignatura (id_profesor);
+
+
 
 /*-------------------------------RELLENAMOS CON DATOS--------------------------------------------*/
 
-INSERT INTO Persona (nombre, apellido1, apellido2, email, password) VALUES 
-    ("Juan", "Lopez", "Garcia", "juan@ejemplo.com", "$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX"),
-    ("Maria", "Garcia", "Perez", "maria@ejemplo.com", "$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX"),
-    ("Pedro", "Gomez", "Garcia", "pedro@ejemplo.com", "$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX"),
-    ("Ana", "Garcia", "Gomez", "ana@ejemplo.com", "$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX"),
-    ("Luis", "Gomez", "Garcia", "luis@ejemplo.com", "$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX"),
-    ("Carmen", "Garcia", "Gomez", "carmen@ejemplo.com", "$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX"),
-    ("Carlos", "Rodriguez", "Perez", "carlos@example.com", "$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX"),
-    ("Laura", "Fernandez", "Sanchez", "laura@example.com", "$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX"),
-    ("David", "Perez", "Rodriguez", "david@example.com", "$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX"),
-    ("Sara", "Gomez", "Fernandez", "sara@example.com", "$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX"),
-    ("Daniel", "Diaz", "Martin", "daniel@example.com", "$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX"),
-    ("Elena", "Ruiz", "Jimenez", "elena@example.com", "$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX");
-
+insert into personal_tutor_online.persona (id_persona, nombre, apellido1, apellido2, email, password, usuario_teams, rol)
+values  (1, 'Juan', 'Lopez', 'Garcia', 'juan@ejemplo.com', '$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX', null, 3),
+        (2, 'Maria', 'Garcia', 'Perez', 'maria@ejemplo.com', '$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX', null, 3),
+        (3, 'Pedro', 'Gomez', 'Garcia', 'pedro@ejemplo.com', '$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX', null, 3),
+        (4, 'Ana', 'Garcia', 'Gomez', 'ana@ejemplo.com', '$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX', null, 3),
+        (5, 'Luis', 'Gomez', 'Garcia', 'luis@ejemplo.com', '$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX', null, 3),
+        (6, 'Carmen', 'Garcia', 'Gomez', 'carmen@ejemplo.com', '$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX', null, 3),
+        (7, 'Carlos', 'Rodriguez', 'Perez', 'carlos@example.com', '$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX', null, 2),
+        (8, 'Laura', 'Fernandez', 'Sanchez', 'laura@example.com', '$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX', null, 2),
+        (9, 'David', 'Perez', 'Rodriguez', 'david@example.com', '$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX', null, 2),
+        (10, 'Sara', 'Gomez', 'Fernandez', 'sara@example.com', '$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX', null, 2),
+        (11, 'Daniel', 'Diaz', 'Martin', 'daniel@example.com', '$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX', null, 2),
+        (12, 'Elena', 'Ruiz', 'Jimenez', 'elena@example.com', '$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX', null, 2);
 INSERT INTO Alumno (id_persona, curso) VALUES 
     (1, "1º ESO"),
     (2, "2º ESO"),
@@ -198,6 +259,11 @@ INSERT INTO Calendario_Clases (id_calendario_profesor, id_alumno, id_asignatura,
     (18, 6, 3, "Pendiente", NULL),
     (19, 1, 4, "Pendiente", NULL),
     (20, 2, 5, "Pendiente", NULL);
+
+insert into personal_tutor_online.roles (id_rol, rol_desc)
+values  (1, 'admin'),
+        (2, 'profesor'),
+        (3, 'alumno');
     
 /*======================== FIN DEL SCRIPT ======================================*/
 
