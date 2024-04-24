@@ -268,5 +268,5 @@ values  (1, 'admin'),
 /*======================== FIN DEL SCRIPT ======================================*/
 
 
-"a5nDC)9//ICW8[zP" /*Para sobremesa*/
+"QDHf(Sco4yFzVuPg" /*Para sobremesa*/
 "ZZVyXc0JEV!CyoJ0" /*Para portatil*/
