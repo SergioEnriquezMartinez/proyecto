@@ -136,7 +136,12 @@ create index id_profesor
 
 
 
-/*-------------------------------RELLENAMOS CON DATOS--------------------------------------------*/
+/*==================================RELLENAMOS CON DATOS=================================*/
+
+insert into personal_tutor_online.roles (id_rol, rol_desc)
+values  (1, 'admin'),
+        (2, 'profesor'),
+        (3, 'alumno');
 
 insert into personal_tutor_online.persona (id_persona, nombre, apellido1, apellido2, email, password, usuario_teams, rol)
 values  (1, 'Juan', 'Lopez', 'Garcia', 'juan@ejemplo.com', '$2y$10$BqE0Dv8cc1xYJxxq1hwjhuOoY.05rBOuxX', null, 3),
@@ -259,17 +264,12 @@ INSERT INTO Calendario_Clases (id_calendario_profesor, id_alumno, id_asignatura,
     (18, 6, 3, "Pendiente", NULL),
     (19, 1, 4, "Pendiente", NULL),
     (20, 2, 5, "Pendiente", NULL);
-
-insert into personal_tutor_online.roles (id_rol, rol_desc)
-values  (1, 'admin'),
-        (2, 'profesor'),
-        (3, 'alumno');
     
 /*======================== FIN DEL SCRIPT ======================================*/
 
 
-"QDHf(Sco4yFzVuPg" /*Para sobremesa*/
-"ZZVyXc0JEV!CyoJ0" /*Para portatil*/
+/*  "QDHf(Sco4yFzVuPg" -> Para sobremesa */
+/*  "ZZVyXc0JEV!CyoJ0" -> Para portatil  */
 
 
 UPDATE persona SET password = "$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge";
