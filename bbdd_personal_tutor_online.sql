@@ -31,7 +31,7 @@ create table persona
     apellido1     varchar(50) not null,
     apellido2     varchar(50) null,
     email         varchar(50) not null,
-    password      varchar(50) not null,
+    password      varchar(255) not null,
     usuario_teams varchar(50) null,
     rol           int         not null,
     constraint persona_roles_id_rol_fk
@@ -270,3 +270,8 @@ values  (1, 'admin'),
 
 "QDHf(Sco4yFzVuPg" /*Para sobremesa*/
 "ZZVyXc0JEV!CyoJ0" /*Para portatil*/
+
+
+UPDATE persona SET password = "$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge";
+
+/*la contraseña despues de hashear es qwe*/
