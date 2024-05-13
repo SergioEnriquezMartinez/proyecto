@@ -274,4 +274,6 @@ INSERT INTO Calendario_Clases (id_calendario_profesor, id_alumno, id_asignatura,
 
 UPDATE persona SET password = "$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge";
 
+ALTER TABLE persona ADD COLUMN profile_image_url TEXT;
+
 /*la contraseña despues de hashear es qwe*/
