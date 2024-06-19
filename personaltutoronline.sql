@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: pdb1056.awardspace.net
--- Tiempo de generación: 17-06-2024 a las 22:25:06
+-- Tiempo de generación: 19-06-2024 a las 22:40:22
 -- Versión del servidor: 8.0.32
 -- Versión de PHP: 8.1.29
 
@@ -42,10 +42,7 @@ INSERT INTO `alumno` (`id_persona`, `curso`) VALUES
 (3, '3º ESO'),
 (4, '4º ESO'),
 (5, '1º Bachillerato'),
-(6, '2º Bachillerato'),
-(17, '1 DAW'),
-(20, 'DAW2'),
-(21, 'fn');
+(6, '2º Bachillerato');
 
 -- --------------------------------------------------------
 
@@ -105,8 +102,7 @@ CREATE TABLE `calendario_clases` (
 INSERT INTO `calendario_clases` (`id_clase`, `id_calendario_profesor`, `id_alumno`, `id_asignatura`, `estado_cita`, `valoracion`) VALUES
 (21, 22, 1, 3, 'Aceptada', 4),
 (22, 24, 1, 4, 'Cancelada', NULL),
-(23, 23, 1, 2, 'Cancelada', NULL),
-(24, 24, 17, 1, 'Cancelada', 5);
+(23, 23, 1, 2, 'Cancelada', NULL);
 
 -- --------------------------------------------------------
 
@@ -150,7 +146,8 @@ INSERT INTO `calendario_profesor` (`id_calendario_profesor`, `id_profesor`, `fec
 (22, 7, '2024-06-10 10:00:00', 'Aceptada'),
 (23, 7, '2024-06-18 12:00:00', 'Disponible'),
 (24, 7, '2024-06-12 18:00:00', 'Disponible'),
-(25, 7, '2024-06-24 14:00:00', 'Disponible');
+(25, 7, '2024-06-24 14:00:00', 'Disponible'),
+(26, 7, '2024-06-20 19:00:00', 'Disponible');
 
 -- --------------------------------------------------------
 
@@ -200,15 +197,7 @@ INSERT INTO `persona` (`id_persona`, `nombre`, `apellido1`, `apellido2`, `email`
 (10, 'Sara', 'Gomez', 'Fernandez', 'sara@example.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'usuario_generico_10', 2),
 (11, 'Daniel', 'Diaz', 'Martin', 'daniel@example.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'usuario_generico_11', 2),
 (12, 'Elena', 'Ruiz', 'Jimenez', 'elena@example.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'usuario_generico_12', 2),
-(13, 'admin', 'pto', NULL, 'admin@pto.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', NULL, 1),
-(14, 'Adriana', 'Popa', 'Popa', 'smrv.alex@gmail.com', '$2y$10$kfKyEyceuDhSywsiZ5b7AOLeyfwbgrK9g/8vbl0XO3s/wBqvRGGRO', '', 2),
-(15, 'Adriana', 'Popa', 'Popa', 'smrv.alex@gmail.com', '$2y$10$vNSpGRj3uSC8qDK83BlSzeQsTAv8M3EMH.Hm8Sh.K9CfUZTPiRp7W', '', 3),
-(16, 'Adriana', 'Popa', 'Popa', 'smrv.alex@gmail.com', '$2y$10$wEnSlCvgoqezpTi91jbnDuZto5Avissl8wCYbwfZs0vEkFd9hp8iW', '', 2),
-(17, 'Alex', 'Mihalache', 'Mihalache', 'test1@gmail.com', '$2y$10$8BOsNRMtQ2CN5zPKB1A.3ODeySeo1I68.qmUbl.6V9KbltshdJwJq', 'Mihalache', 3),
-(18, 'Manuel', 'Manzano', 'Fernández', 'vdele93@gmail.com', '$2y$10$XS//HUHuRPv/TQZuqd82U.B0/Zw4ibSxvOMLTdglwm/nLmH2GzbZq', '', 2),
-(19, 'Pepe', 'Pepon', 'Pepero', 'texiwof669@fna6.com', '$2y$10$LcVFK66DP2ZNhYqBcRtB8O3H4LsqZDhb.82/cWf1Nuw9T1JRhun3C', '', 2),
-(20, 'Miguel', 'Prieto', 'Hernandez', 'miguel@gmail.com', '$2y$10$5PHW08iJWbJe2x5zxo8WVuVeDg2KEWoZQOhLZF4U/iP9fp7aOmWMy', 'miguel.priher', 3),
-(21, 'Miguel', 'Prieto', 'Alumno', 'miguelA@gmail.com', '$2y$10$jnYdv7ECwDHDSiUwQMppIOggh0.McL7ElHpFYTm6bW4F1d2EgGqMm', 'miguel.alumno', 3);
+(13, 'admin', 'pto', NULL, 'admin@pto.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -231,10 +220,7 @@ INSERT INTO `profesor` (`id_persona`, `centro_de_trabajo`) VALUES
 (9, 'IES Alonso de Madrigal'),
 (10, 'IES Alonso de Madrigal'),
 (11, 'IES Alonso de Madrigal'),
-(12, 'IES Alonso de Madrigal'),
-(14, 'IES '),
-(18, 'Churrería'),
-(19, 'IES Peperonni');
+(12, 'IES Alonso de Madrigal');
 
 -- --------------------------------------------------------
 
@@ -278,11 +264,6 @@ INSERT INTO `profesor_asignatura` (`id_profesor_asignatura`, `id_profesor`, `id_
 (28, 12, 13),
 (29, 12, 14),
 (30, 12, 15),
-(35, 19, 1),
-(36, 19, 2),
-(37, 19, 4),
-(38, 19, 7),
-(39, 19, 8),
 (40, 7, 1),
 (41, 7, 2),
 (42, 7, 3),
@@ -397,7 +378,7 @@ ALTER TABLE `calendario_clases`
 -- AUTO_INCREMENT de la tabla `calendario_profesor`
 --
 ALTER TABLE `calendario_profesor`
-  MODIFY `id_calendario_profesor` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_calendario_profesor` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `chat`
@@ -409,7 +390,7 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `id_persona` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_persona` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `profesor_asignatura`
