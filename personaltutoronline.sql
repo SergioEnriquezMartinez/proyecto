@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: pdb1056.awardspace.net
--- Tiempo de generación: 19-06-2024 a las 22:40:22
+-- Tiempo de generación: 20-06-2024 a las 14:46:53
 -- Versión del servidor: 8.0.32
 -- Versión de PHP: 8.1.29
 
@@ -185,18 +185,18 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`id_persona`, `nombre`, `apellido1`, `apellido2`, `email`, `password`, `usuario_teams`, `rol`) VALUES
-(1, 'Juan', 'Lopez', 'Garcia', 'juan@ejemplo.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'usuario_generico_1', 3),
-(2, 'Maria', 'Garcia', 'Perez', 'maria@ejemplo.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'usuario_generico_2', 3),
-(3, 'Pedro', 'Gomez', 'Garcia', 'pedro@ejemplo.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'usuario_generico_3', 3),
-(4, 'Ana', 'Garcia', 'Gomez', 'ana@ejemplo.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'usuario_generico_4', 3),
-(5, 'Luis', 'Gomez', 'Garcia', 'luis@ejemplo.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'usuario_generico_5', 3),
-(6, 'Carmen', 'Garcia', 'Gomez', 'carmen@ejemplo.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'usuario_generico_6', 3),
-(7, 'Carlos', 'Rodriguez', 'Perez', 'carlos@example.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'usuario_generico_7', 2),
-(8, 'Laura', 'Fernandez', 'Sanchez', 'laura@example.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'usuario_generico_8', 2),
-(9, 'David', 'Perez', 'Rodriguez', 'david@example.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'usuario_generico_9', 2),
-(10, 'Sara', 'Gomez', 'Fernandez', 'sara@example.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'usuario_generico_10', 2),
-(11, 'Daniel', 'Diaz', 'Martin', 'daniel@example.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'usuario_generico_11', 2),
-(12, 'Elena', 'Ruiz', 'Jimenez', 'elena@example.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'usuario_generico_12', 2),
+(1, 'Juan', 'Lopez', 'Garcia', 'juan@ejemplo.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'juan.lopez', 3),
+(2, 'Maria', 'Garcia', 'Perez', 'maria@ejemplo.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'maria.garcia', 3),
+(3, 'Pedro', 'Gomez', 'Garcia', 'pedro@ejemplo.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'pedro.gomez', 3),
+(4, 'Ana', 'Garcia', 'Gomez', 'ana@ejemplo.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'ana.garcia', 3),
+(5, 'Luis', 'Gomez', 'Garcia', 'luis@ejemplo.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'luis.gomez', 3),
+(6, 'Carmen', 'Garcia', 'Gomez', 'carmen@ejemplo.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'carmen.garcia', 3),
+(7, 'Carlos', 'Rodriguez', 'Perez', 'carlos@example.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'carlos.rodriguez', 2),
+(8, 'Laura', 'Fernandez', 'Sanchez', 'laura@example.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'laura.fernandez', 2),
+(9, 'David', 'Perez', 'Rodriguez', 'david@example.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'david.perez', 2),
+(10, 'Sara', 'Gomez', 'Fernandez', 'sara@example.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'sara.gomez', 2),
+(11, 'Daniel', 'Diaz', 'Martin', 'daniel@example.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'daniel.diaz', 2),
+(12, 'Elena', 'Ruiz', 'Jimenez', 'elena@example.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', 'elena.ruiz', 2),
 (13, 'admin', 'pto', NULL, 'admin@pto.com', '$2a$10$jMvEB5mkEE.Xp2uiera7Zeb.SlfuD8EePeMTXH.7YulnTO7GNaoge', NULL, 1);
 
 -- --------------------------------------------------------
